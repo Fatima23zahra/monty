@@ -5,19 +5,18 @@
  * @stack: Pointer top node of the stack.
  * @line_number: the line number of of the opcode.
  */
-void print_char(stack_t **stack, unsigned int line_number)
+void print_char(stack_t **stack, unsigned int line_number);
 {
-If (*stack == NULL)
-exit (EXIT_FAILURE);
-Tmp = *stack;
-while ((*stack) = (*stack)->next)
- {
-if (stack == NULL || *stack == NULL)
-more_error(11, line_number);
-exit (EXIT_FAILURE);
+if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+string_err(12, line_number);
+int a = (*stack)->n;
+int b = (*stack)->next->n;
+int sum = a + b;
+pop(stack);
+pop(stack);
+// Push the sum onto the stack
+push(stack, sum);
 }
-}
-return;
 
 /**
  * print_string - Prints a string.
@@ -26,24 +25,11 @@ return;
  */
 void print_string(stack_t **stack,  unsigned int line_number);
 {
-int n;
-If (stack == NULL && *stack == NULL)
-{
-Printf("\n");
-return;
+if (stack == NULL || *stack == NULL)
+string_err(13, ln);
+int value = (*stack)->n;
+push(stack, value);
 }
-Top = *stack;
-print(« formatted string: « );
-while (tmp == NULL)
-{
-tmp = top->;
-If (tmp = 0 || top > 127)
-break; 
-print("full stack: ");
-tmp = tmp->next;
-}
-print("\n");
-return (n);
 
 /**
  * print_run - the first commande of the stack
@@ -52,36 +38,15 @@ return (n);
  */
 void print_run(stack_t **stack,  unsigned int line_number);
 {
-stack_t *tmp;
-If (stack == NULL || *stack == NULL)
+if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 return;
-{
-tmp = *stack;
-While (tmp != NULL)
-else if (tmp->n == ‘a’)
-Tmp->n = ‘x’;
-if (tmp->n == ‘b’)
-tmp->n =‘y’;
-// Add more character replacements as needed
-
+stack_t *tmp = *stack;
+while (tmp->next != NULL)
 tmp = tmp->next;
+tmp->next = *stack;
+(*stack)->prev = tmp;
+*stack = (*stack)->next;
+(*stack)->prev->next = NULL;
+(*stack)->prev = NULL;
 }
-
-/**
- * print_run - the last node of the stack to the top.
- * @stack: Pointer to node of the stack.
- * @ln: the line number of of the opcode.
- */
-void print_run(stack_t **stack,  unsigned int line_number);
-{
-stack_t *tmp;
-If (stack == NULL || *stack == NULL)
-return;
-tmp = *stack;
-While (tmp != NULL)
-{
-tmp = tmp->next;
-}
-push(stack, *stack);
-return;
 

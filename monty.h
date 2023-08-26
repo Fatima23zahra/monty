@@ -51,7 +51,7 @@ void free_nodes(void);
 void print_stack(stack_t **stack, unsigned int line_number);
 void monty_stack(stack_t **stack, unsigned int line_number);
 void monty_queue(stack_t **stack, unsigned int line_number);
-void monty_fun(op_func, char *, int);
+void monty_fun(op_fun, char *, int, int);
 void print_top(stack_t **stack, unsigned int line_number);
 void pop_top(stack_t **stack, unsigned int line_number);
 void monty_nop(stack_t **stack, unsigned int line_number);

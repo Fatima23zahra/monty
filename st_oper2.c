@@ -8,64 +8,78 @@
 void monty_nop(stack_t **stack, unsigned int line_number)
 {
 }
-return;
+
 /**
  * swap_nodes - Swaps are two elements of the stack.
  * @stack: Pointer to top node of the stack.
  * @line_number: Line number of of the opcode.
  */
-void swap_nodes(stack_t **stack, unsigned int line_number);
+void swap_nodes(stack_t **stack, unsigned int line_number)
 {
-Int *stack;
-If (if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-}
-more_error(int error_code, line_number);
+stack_t *tmp;
+if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+more_error(8, line_number, "swap");
 tmp = (*stack)->next;
 (*stack)->next = tmp->next;
-{
+if (tmp->next != NULL)
+tmp->next->prev = *stack;
+tmp->next = *stack;
+(*stack)->prev = tmp;
+tmp->prev = NULL;
+*stack = tmp;
 }
-return;
 /**
  * add_nodes : two function in the nodes of the stack.
  * @stack: Pointer to node of the stack.
  * @@line_number: Line number of of the opcode.
  *
  */
-void add_nod(stack_t **stack, unsigned int line_number);
-if ((*stack)->next == NULL || (*stack)->next->next == NULL)
+void add_nod(stack_t **stack, unsigned int line_number)
 {
-(*stack)->next == next->next;
-add_nodes (*stack, line_number);
+stack_t *tmp;
+if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+more_error(8, line_number, "swap");
+tmp = (*stack)->next;
+(*stack)->next = tmp->next;
+if (tmp->next != NULL)
+tmp->next->prev = *stack;
+tmp->next = *stack;
+(*stack)->prev = tmp;
+tmp->prev = NULL;
+*stack = tmp;
 }
-return;
 /**
  * sub_nodes - Adds the top two elements of the stack.
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @line_number: the line number of the opcode.
  */
-void sub_nod(stack_t **stack, unsigned int line_number);
+void sub_nod(stack_t **stack, unsigned int line_number)
 {
+int difference;
 if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-more_error(int line_number, "sub");
+more_error(8, line_number, "sub");
 (*stack) = (*stack)->next;
-{
+difference = (*stack)->n - (*stack)->prev->n
+(*stack)->n = difference;
+free((*stack)->prev);
+(*stack)->prev = NULL;
 }
-free((*stack)->next);
-(*stack)->next= NULL;
-}
-return;
 /**
  * div_nod - two finction in the nodes of the stack.
  * @stack: ointer to node of the stack.
  * @line_number: the line of the opcode.
  *
  */
-void div_nod(stack_t **stack, unsigned int line_number);
+void div_nod(stack_t **stack, unsigned int line_number)
 {
+int quotient;
 if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-more_error(int line_number, "div");
-{
-div_nod (*stack, line_number);
+more_error(8, line_number, "div");
+if ((*stack)->n == 0)
+more_error(9, line_number);
+(*stack) = (*stack)->next;
+quotient = (*stack)->n / (*stack)->prev->n;
+(*stack)->n = quotient;
+free((*stack)->prev);
+(*stack)->prev = NULL;
 }
-}
-return;

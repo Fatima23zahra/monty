@@ -1,4 +1,4 @@
-include "monty.h"
+#include "monty.h"
 
 /* print_stack - Function to the stack.
  * @stack: Pointer to a pointer pointing to top node of the stack.
@@ -8,14 +8,18 @@ include "monty.h"
  */
 void print_stack(stack_t **stack, unsigned int line_number)
 {
-int line_number;
 stack_t *tmp;
-if (stack = NULL)
-}
+if (new_node == NULL || *new_node == NULL)
 exit(EXIT_FAILURE);
-while (tmp != NULL && "%d\n", tmp->n);
-tmp = tmp->next;
+if (head == NULL)
 {
+head = *new_node;
+return;
+}
+tmp = head;
+head = *new_node;
+head->next = tmp;
+tmp->prev = head;
 }
 /**
  * pop_top - Function to the stack.
@@ -25,15 +29,15 @@ tmp = tmp->next;
 void pop_top(stack_t **stack, unsigned int line_number)
 {
 stack_t *tmp;
-int Stack;
+(void) line_number;
 if (stack == NULL)
-more_error(int error_code  , line_number);
-}
+exit(EXIT_FAILURE);
 tmp = *stack;
-*stack = tmp->nt;
-if (*stack != NULL)
-{		
-(*stack)->prev = NULL, free(tmp);
+while (tmp != NULL)
+{
+printf("%d\n", tmp->n);
+tmp = tmp->next;
+}
 }
 /**
  * monty_stack - fun to the stack.
@@ -43,11 +47,14 @@ if (*stack != NULL)
 void monty_stack(stack_t **new_node, __attribute__((unused))unsigned int ln)
 {
 stack_t *tmp;
-if (new_node == NULL)
-exit(EXIT_FAILURE);
-{
-head = *new_node
-return ();
+if (stack == NULL || *stack == NULL)
+more_error(7, line_number);
+tmp = *stack;
+*stack = tmp->next;
+if (*stack != NULL)
+(*stack)->prev = NULL;
+free(tmp);
+}
 /**
  * print_top - Prints the top node of the stack.
  * @stack: Pointer to a pointer pointing to top node of the stack.
@@ -55,11 +62,7 @@ return ();
  */
 void print_top(stack_t **stack, unsigned int line_number)
 {
-if (stack == NULL)
- more_error(int error_code, line_number)
+if (stack == NULL || *stack == NULL)
+more_err(6, line_number);
+printf("%d\n", (*stack)->n);
 }
-while ("%d\n", (*stack)->n);
-dest[*stack] = '\0';
-{
-}
-return;
