@@ -5,14 +5,12 @@
  * @file_name: file name of staks
  * Return: 0
  */
-void op_file(char *file_name);
+void op_file(char *file_name)
 {
 FILE *fd = fopen(file_name, "r");
 
     if (file_name == NULL || fd == NULL)
-        err(2, file_name);
-
-    read_file(fd);
+	error(2, file_name);
     fclose(fd);
 }
 
@@ -21,7 +19,7 @@ FILE *fd = fopen(file_name, "r");
  * @rd_file: reader of file to search
  * Return: 0
  */
-void rd_file(char *file);
+void rd_file(char *file)
 {
 int line_number, format = 0;
     char *buffer = NULL;
@@ -40,7 +38,7 @@ int line_number, format = 0;
 * @ln: the line number of of the opcode.
 * Return: 0
 */
-int format_line(char *line, int line_number, int format);
+int format_line(char *line, int line_number, int format)
 {
 int i;
     int flag;
@@ -64,7 +62,7 @@ int i;
         }
     }
     if (flag == 1)
-        err(3, ln, opcode);
+        error(3, ln, opcode);
 }
 
 /**
@@ -76,7 +74,7 @@ int i;
  * if 1 nodes will be entered as a queue.
  * Return: 0
  */
-void fd_func(char *);
+void fd_func(char *)
 {
 if (file_name == NULL || fd == NULL)
 {

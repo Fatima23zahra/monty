@@ -1,44 +1,44 @@
 #include "monty.h"
 
 /**
- * mul_nodes - Adds two elements of the stack.
- * @stack: Pointer to node of the stack.
- * @line_number: the line number of of the opcode.
+ * mul_nodes - Adds the top two elements of the stack.
+ * @stack: Pointer to a pointer pointing to top node of the stack.
+ * @line_number: Interger representing the line number of of the opcode.
  */
-void mul_nodes(char *stack, unsigned int line_number)
+void mul_nodes(stack_t **stack, unsigned int line_number)
 {
-int product;
+	int sum;
 
-    if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-        more_error(8, line_number, "mul");
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		more_error(8, line_number, "mul");
 
-    (*stack) = (*stack)->next;
-    product = (*stack)->n * (*stack)->prev->n;
-
-    (*stack)->n = product;
-    free((*stack)->prev);
-    (*stack)->prev = NULL;
+	(*stack) = (*stack)->next;
+	sum = (*stack)->n * (*stack)->prev->n;
+	(*stack)->n = sum;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
 }
 
+
 /**
- * monty_mul - multiplies the second top element of the stack
- * @stack: Pointer to node of the stack.
- * @line_number: the line number of of the opcode.
+ * mod_nodes - Adds the top two elements of the stack.
+ * @stack: Pointer to a pointer pointing to top node of the stack.
+ * @line_number: Interger representing the line number of of the opcode.
  */
-void mod_nod(stack_t *stack, unsigned int line_number);
+void monty_nul(stack_t **stack, unsigned int line_number)
 {
-int remainder;
+	int sum;
 
-    if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-        more_error(8, line_number, "mod");
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 
-    if ((*stack)->n == 0)
-        more_error(9, line_number);
+		more_error(8, line_number, "mod");
 
-    (*stack) = (*stack)->next; 
-    remainder = (*stack)->n % (*stack)->prev->n;
 
-    (*stack)->n = remainder;
-    free((*stack)->prev);
-    (*stack)->prev = NULL;
+	if ((*stack)->n == 0)
+		more_error(9, line_number);
+	(*stack) = (*stack)->next;
+	sum = (*stack)->n % (*stack)->prev->n;
+	(*stack)->n = sum;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
 }
