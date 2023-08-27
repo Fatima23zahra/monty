@@ -7,20 +7,14 @@
  */
 void op_file(char *file_name);
 {
-if (file_name == NULL || fd == NULL)
-{
-more_errore("Error opening file");
-return;
-}
-int file_name = 0;
-char *file_name;
-while ((file_name == fgetc(fd) != EOF)
+FILE *fd = fopen(file_name, "r");
 
-if (file_name == ‘\n’);
+    if (file_name == NULL || fd == NULL)
+        err(2, file_name);
 
-print(« Number of lines in %s: %d\n, file_name);
+    read_file(fd);
+    fclose(fd);
 }
-return;
 
 /**
  * read_file - reads a file
@@ -29,19 +23,15 @@ return;
  */
 void rd_file(char *file);
 {
-if (file_name == NULL || fd == NULL)
-{
-more_errore("Error opening file");
-return;
-}
-Int rd_file;
-while (( rd_file = fgetc(fd)) != EOF)
-{
-if (rd_file == target_char)
-{
-else;
-return;
-}
+int line_number, format = 0;
+    char *buffer = NULL;
+    size_t len = 0;
+
+    for (line_number = 1; getline(&buffer, &len, fd) != -1; line_number++)
+    {
+        format = parse_line(buffer, line_number, format);
+    }
+    free(buffer);
 }
 
 /**
@@ -52,22 +42,29 @@ return;
 */
 int format_line(char *line, int line_number, int format);
 {
-if (file_name == NULL || fd == NULL)
-{
-Perron(« Error opening file »);
-Return;
-}
-while (fscanf(fd, « %lf », &value) !=EOF)
-{
-if (max_value != 0)
-{
-print(« maxime value in %s: %lf\n »);
-}
-else
-{
-print(« no values found in the file. \n »);
-}
-return;
+int i;
+    int flag;
+
+    instruction_t func_list[] = {
+        {"push", add_to_stack},
+        {"pall", print_stack},
+        // ... more entries
+        {NULL, NULL}
+    };
+
+    if (opcode[0] == '#')
+        return;
+
+    for (flag = 1, i = 0; func_list[i].opcode != NULL; i++)
+    {
+        if (strcmp(opcode, func_list[i].opcode) == 0)
+        {
+            call_fun(func_list[i].f, opcode, value, ln, format);
+            flag = 0;
+        }
+    }
+    if (flag == 1)
+        err(3, ln, opcode);
 }
 
 /**

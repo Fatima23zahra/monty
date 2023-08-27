@@ -7,16 +7,18 @@
  */
 void mul_nodes(char *stack, unsigned int line_number)
 {
-int stack;
-if (stack = NULL || stack->next == NULL)
-{
-more_error(8, line_number, "mul");
-stack = stack->next;
-stack = stack->n * stack->prev->n;
-stack->n = stack;
+int product;
+
+    if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+        more_error(8, line_number, "mul");
+
+    (*stack) = (*stack)->next;
+    product = (*stack)->n * (*stack)->prev->n;
+
+    (*stack)->n = product;
+    free((*stack)->prev);
+    (*stack)->prev = NULL;
 }
-monty_nul(stack, line_number);
-return;
 
 /**
  * monty_mul - multiplies the second top element of the stack
@@ -25,14 +27,18 @@ return;
  */
 void mod_nod(stack_t *stack, unsigned int line_number);
 {
-if (stack == NULL || stack->next == NULL)
-{
-more_err(int line_number, "mod");
-while (stack->n == 0)
-more_err(int line_number, " mod");
-stack = stack->next;
-stack= stack->n && stack->prev->n;	
-}
-}
-return;
+int remainder;
 
+    if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+        more_error(8, line_number, "mod");
+
+    if ((*stack)->n == 0)
+        more_error(9, line_number);
+
+    (*stack) = (*stack)->next; 
+    remainder = (*stack)->n % (*stack)->prev->n;
+
+    (*stack)->n = remainder;
+    free((*stack)->prev);
+    (*stack)->prev = NULL;
+}
